@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: details.isEmpty
-          ?  Center(child: Text("No data",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.sp),))
+          ?  Center(child: Text("Add Employe Details",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20.sp),))
           : ListView.separated(
             separatorBuilder: ((context, index) {
              return SizedBox(height: 2.h,);
@@ -69,10 +69,15 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Text("Age : ${details[index].age.toString()}"),
                           SizedBox(
-                            width: 2.w,
+                            height: 3,
                           ),
                           Text(
                               "Experience : ${details[index].experience.toString()} years"),
+                               SizedBox(
+                            height: 3,
+                          ),
+                          Text(
+                              "Status : ${details[index].status.toString()}"),
                         ],
                       ),
                       trailing: Padding(

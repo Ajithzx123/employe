@@ -12,7 +12,7 @@ void main(List<String> args) async {
   await Hive.initFlutter();
   Hive.registerAdapter(EmployeAdapter());
   await Hive.openBox<Employe>('employe');
-  Hive.box<Employe>("employe").clear();
+  // Hive.box<Employe>("employe").clear();
    runApp(const MyApp());
 }
 

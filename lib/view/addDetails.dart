@@ -2,12 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
-import 'package:zylu_task/Model/employe_Model.dart';
 import 'package:zylu_task/controller/employe_Controller.dart';
-import 'package:zylu_task/view/HomeScreen.dart';
 import 'package:zylu_task/view/Widgets/customButton.dart';
 import 'package:zylu_task/view/Widgets/textfield.dart';
 
@@ -44,7 +41,7 @@ class AddDetails extends StatelessWidget {
                           bottom: 1,
                           left: 55,
                           child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.add_a_photo,
                               color: Colors.black,
                             ),
