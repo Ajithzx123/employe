@@ -33,7 +33,9 @@ class AddDetails extends StatelessWidget {
                     child: Stack(
                       children: [
                         CircleAvatar(
-                          backgroundImage: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBoxErh-NQl2NfpgZreigHy9RwMva6A9hQVQ&usqp=CAU",),
+                          backgroundImage: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBoxErh-NQl2NfpgZreigHy9RwMva6A9hQVQ&usqp=CAU",
+                          ),
                           backgroundColor: Colors.white,
                           radius: 20.w,
                         ),

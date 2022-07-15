@@ -1,26 +1,17 @@
 import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
-import 'package:zylu_task/Model/Employe_firebase_model.dart';
-import 'package:zylu_task/Model/employe_Model.dart';
+
 import 'package:zylu_task/controller/employe_Controller.dart';
 import 'package:zylu_task/view/addDetails.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key? key}) : super(key: key);
 
- 
-  // List<Employe> details = Hive.box<Employe>('employe').values.toList();
-
- 
-
   @override
   Widget build(BuildContext context) {
     EmployeController controller = Get.put(EmployeController());
-    // print(details.length);
 
     return Scaffold(
       backgroundColor: Colors.white,

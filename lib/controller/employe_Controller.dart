@@ -16,51 +16,43 @@ class EmployeController extends GetxController {
       ageController,
       experienceController;
 
-  //firestore operations
-
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   late CollectionReference collectionReference;
 
-  // RxList<EmployeModel> employees = <EmployeModel>[].obs;
-
-    RxList employe = [].obs;
-
+  RxList employe = <EmployeModel>[].obs;
 
   @override
-  void onInit()async {
+  void onInit() async {
     super.onInit();
     nameController = TextEditingController();
     ageController = TextEditingController();
     experienceController = TextEditingController();
 
-    // collectionReference = await firebaseFirestore.collection("employes");
-    //  employees.bindStream(getAllEmploye());
+    collectionReference = await firebaseFirestore.collection("employes");
     fetchdata();
-     
   }
+
   fetchdata() async {
     var records = await FirebaseFirestore.instance.collection("employes").get();
-   
     maprecords(records);
   }
 
   maprecords(QuerySnapshot<Map<String, dynamic>> records) {
-  var list=   records.docs.map((item) => EmployeModel(
-        age: item["age"],
-        experience: item["experience"],
-        image: item["image"],
-        name: item["name"],
-        status: item["status"])).toList();
-       
-          employe.value = list;
-       
-        // print("hiiiiiiiii$emp");
+    var list = records.docs
+        .map((item) => EmployeModel(
+            age: item["age"],
+            experience: item["experience"],
+            image: item["image"],
+            name: item["name"],
+            status: item["status"]))
+        .toList();
+
+    employe.value = list;
   }
 
   @override
   void onClose() {
-    // TODO: implement onClose
     super.onClose();
     nameController.dispose();
     ageController.dispose();
@@ -83,6 +75,7 @@ class EmployeController extends GetxController {
       'image': imagepath!.value.toString(),
     }).whenComplete(
       () {
+        fetchdata();
         clearTextediting();
         Get.to(() => HomeScreen());
         Get.snackbar("Success", "Employee Added Successfully",
@@ -101,12 +94,4 @@ class EmployeController extends GetxController {
     imagepath!.value = "";
     value.value = "";
   }
-
-  
-   getAllEmploye() {
-
-    // return collectionReference.snapshots().map((query) => query.docs.map((item) => EmployeModel.fromMap(item)).toList());
-
-  }
- 
 }
