@@ -5,14 +5,18 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:zylu_task/Model/employe_Model.dart';
 import 'package:zylu_task/view/HomeScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main(List<String> args) async {
  
    WidgetsFlutterBinding.ensureInitialized();
+   
+   await Firebase.initializeApp();
+   
   await Hive.initFlutter();
   Hive.registerAdapter(EmployeAdapter());
   await Hive.openBox<Employe>('employe');
-  // Hive.box<Employe>("employe").clear();
+  Hive.box<Employe>("employe").clear();
    runApp(const MyApp());
 }
 
